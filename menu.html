@@ -2,18 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Vetkoek Delivery | Menu</title>
+  <title>Menu | Vetkoek Delivery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header -->
+
   <header class="site-header">
-    <div class="logo">
-      <h1>🍔 Vetkoek Delivery</h1>
-    </div>
+    <div class="logo"><h1>🍔 Vetkoek Delivery</h1></div>
     <nav>
       <a href="index.html">Home</a>
-      <a href="menu.html" class="active">Menu</a>
+      <a href="menu.html">Menu</a>
       <a href="delivery.html">Delivery</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
@@ -21,73 +20,30 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-overlay">
-      <h2>Our Delicious Menu</h2>
-      <p>Vetkoek • Burgers • Kotas • Chips</p>
-      <a href="orders.html" class="cta-btn">Order Now</a>
-    </div>
-  </section>
-
-  <!-- Menu Section -->
   <section class="featured">
-    <h2>🔥 Popular Items</h2>
-    <div class="featured-gallery">
-      <div class="featured-item">
-        <div class="image-wrapper">
-          <img src="images/zulu-burger.jpg" alt="Zulu Burger">
-        </div>
-        <h3>Zulu Burger</h3>
-        <p>Juicy beef patty stacked with fresh toppings.</p>
-        <p class="price">R45</p>
-      </div>
-
-      <div class="featured-item">
-        <div class="image-wrapper">
-          <img src="images/vetkoek.jpg" alt="Classic Vetkoek">
-        </div>
+    <h2>Our Delicious Menu</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
         <h3>Classic Vetkoek</h3>
         <p>Golden, fluffy vetkoek with mince or cheese filling.</p>
         <p class="price">R25</p>
+        <button>Add to Cart</button>
       </div>
-
-      <div class="featured-item">
-        <div class="image-wrapper">
-          <img src="images/rib-kota.jpg" alt="Rib Kota">
-        </div>
+      <div class="menu-item">
+        <h3>Zulu Burger</h3>
+        <p>Juicy beef patty stacked with fresh toppings.</p>
+        <p class="price">R45</p>
+        <button>Add to Cart</button>
+      </div>
+      <div class="menu-item">
         <h3>Rib Kota</h3>
         <p>Loaded with ribs, chips, and cheese — a township classic.</p>
         <p class="price">R60</p>
+        <button>Add to Cart</button>
       </div>
     </div>
   </section>
 
-  <!-- Extra Menu Section -->
-  <section class="featured">
-    <h2>🍟 Sides & Drinks</h2>
-    <div class="featured-gallery">
-      <div class="featured-item">
-        <div class="image-wrapper">
-          <img src="images/chips.jpg" alt="Chips">
-        </div>
-        <h3>Chips</h3>
-        <p>Crispy golden fries, perfect with any meal.</p>
-        <p class="price">R20</p>
-      </div>
-
-      <div class="featured-item">
-        <div class="image-wrapper">
-          <img src="images/soft-drink.jpg" alt="Soft Drink">
-        </div>
-        <h3>Soft Drink</h3>
-        <p>Refreshing cold drink to complete your meal.</p>
-        <p class="price">R15</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer>
     <p>&copy; 2026 Vetkoek Delivery | Front of 46 Anderson Street, Nelspruit</p>
     <div class="social-icons">
@@ -96,5 +52,7 @@
       <a href="#">TikTok</a>
     </div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

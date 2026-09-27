@@ -29,7 +29,7 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Toggle mobile nav
+// Mobile menu toggle
 const menuToggle = document.createElement('button');
 menuToggle.className = 'menu-toggle';
 menuToggle.textContent = '☰ Menu';
