@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Orders - Vetkoek Delivery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <h1>🍔 Place Your Order</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="delivery.html">Delivery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="orders.html" class="active">Orders</a>
+    </nav>
+  </header>
+
+  <!-- Order Section -->
+  <section class="order-section">
+    <h2>Choose Your Meal</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <h3>Classic Vetkoek</h3>
+        <p>Golden, fluffy vetkoek with mince filling.</p>
+        <p class="price">R25</p>
+        <button onclick="addToCart('Classic Vetkoek', 25)">Add to Order</button>
+      </div>
+      <div class="menu-item">
+        <h3>Zulu Burger</h3>
+        <p>Juicy beef patty stacked with fresh toppings.</p>
+        <p class="price">R45</p>
+        <button onclick="addToCart('Zulu Burger', 45)">Add to Order</button>
+      </div>
+      <div class="menu-item">
+        <h3>Rib Kota</h3>
+        <p>Loaded with ribs, chips, and cheese.</p>
+        <p class="price">R60</p>
+        <button onclick="addToCart('Rib Kota', 60)">Add to Order</button>
+      </div>
+      <div class="menu-item">
+        <h3>Chips</h3>
+        <p>Crispy golden fries.</p>
+        <p class="price">R20</p>
+        <button onclick="addToCart('Chips', 20)">Add to Order</button>
+      </div>
+    </div>
+
+    <!-- Cart Section -->
+    <h2>Your Order</h2>
+    <div id="cart" class="cart">
+      <p>No items yet. Add something delicious!</p>
+    </div>
+    <p id="total" class="total">Total: R0</p>
+
+    <!-- Customer Details -->
+    <form id="checkoutForm" class="checkout-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <textarea name="address" rows="3" placeholder="Delivery Address" required></textarea>
+      <button type="submit" class="cta-btn">Confirm Order</button>
+    </form>
+
+    <!-- Order Status Tracker -->
+    <h2>Order Status</h2>
+    <div id="statusTracker" class="status-tracker">
+      <p>No active orders.</p>
+    </div>
+
+    <!-- Delivery Countdown -->
+    <h2>Estimated Delivery Time</h2>
+    <div id="deliveryCountdown" class="delivery-countdown">
+      <p>No active orders.</p>
+    </div>
+
+    <!-- Track on Map -->
+    <h2>Track Your Delivery</h2>
+    <div class="map-section">
+      <button class="map-btn" onclick="trackOnMap()">📍 Track on Map</button>
+      <div id="mapPlaceholder" class="map-placeholder">
+        <p>Map tracking will appear here.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Vetkoek Delivery | Front of 46 Anderson Street, Nelspruit</p>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    let cartItems = [];
+    let totalPrice = 0;
+    let currentStatus = null;
+    let countdownTimer = null;
+
+    function addToCart(item, price) {
+      cartItems.push({ item, price });
+      totalPrice += price;
+      renderCart();
+    }
+
+    function renderCart() {
+      const cart = document.getElementById('cart');
+      cart.innerHTML = '';
+      cartItems.forEach((order, index) => {
+        cart.innerHTML += `
+          <div class="order-card">
+            <p>${order.item} - R${order.price}</p>
+            <button onclick="removeItem(${index})">Remove</button>
+          </div>
+        `;
+      });
+      document.getElementById('total').innerText = "Total: R" + totalPrice;
+    }
+
+    function removeItem(index) {
+      totalPrice -= cartItems[index].price;
+      cartItems.splice(index, 1);
+      renderCart();
+    }
+
+    const checkoutForm = document.getElementById('checkoutForm');
+    checkoutForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if(cartItems.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+      alert("Thank you! Your order has been placed.");
+      startStatusTracker();
+      startDeliveryCountdown(45); // default 45 minutes
+      cartItems = [];
+      totalPrice = 0;
+      renderCart();
+      checkoutForm.reset();
+    });
+
+    function startStatusTracker() {
+      const tracker = document.getElementById('statusTracker');
+      const statuses = ["Pending", "Preparing", "Ready", "Delivered"];
+      let step = 0;
+      tracker.innerHTML = `<p>Status: <strong>${statuses[step]}</strong></p>`;
+      currentStatus = setInterval(() => {
+        step++;
+        if(step < statuses.length) {
+          tracker.innerHTML = `<p>Status: <strong>${statuses[step]}</strong></p>`;
+        } else {
+          clearInterval(currentStatus);
+        }
+      }, 5000); // updates every 5 seconds
+    }
+
+    function startDeliveryCountdown(minutes) {
+      const countdown = document.getElementById('deliveryCountdown');
+      let timeLeft = minutes * 60; // convert to seconds
+
+      clearInterval(countdownTimer);
+      countdownTimer = setInterval(() => {
+        let mins = Math.floor(timeLeft / 60);
+        let secs = timeLeft % 60;
+        countdown.innerHTML = `<p>Estimated delivery in: ${mins}m ${secs}s</p>`;
+        timeLeft--;
+
+        if(timeLeft < 0) {
+          clearInterval(countdownTimer);
+          countdown.innerHTML = `<p>Your order should have arrived 🎉</p>`;
+        }
+      }, 1000);
+    }
+
+    function trackOnMap() {
+      const map = document.getElementById('mapPlaceholder');
+      map.innerHTML = `
+        <iframe 
+          src="https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=Nelspruit" 
+          width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+      `;
+    }
+  </script>
+</body>
+</html>
