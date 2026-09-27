@@ -28,3 +28,13 @@ window.addEventListener('scroll', () => {
     animateCounters();
   }
 });
+
+// Toggle mobile nav
+const menuToggle = document.createElement('button');
+menuToggle.className = 'menu-toggle';
+menuToggle.textContent = '☰ Menu';
+document.querySelector('.site-header').insertBefore(menuToggle, document.querySelector('nav'));
+
+menuToggle.addEventListener('click', () => {
+  document.querySelector('nav').classList.toggle('show');
+});

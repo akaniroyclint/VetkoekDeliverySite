@@ -618,3 +618,134 @@ footer p {
 .quick-links a:hover {
   color: #ff6600;
 }
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+  display: none;
+  background: #ffcc00;
+  color: #000;
+  border: none;
+  padding: 10px 16px;
+  font-size: 1.2em;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+  nav {
+    display: none;
+    flex-direction: column;
+    background: #1a1a1a;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+  }
+  nav.show {
+    display: flex;
+  }
+  .menu-toggle {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-overlay h2 { font-size: 36px; }
+  .hero-overlay p { font-size: 16px; }
+}
+
+@media (max-width: 480px) {
+  .hero-overlay h2 { font-size: 28px; }
+  .hero-overlay p { font-size: 14px; }
+  .cta-btn { padding: 12px 20px; font-size: 0.9em; }
+}
+
+@media (max-width: 768px) {
+  .featured-gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+  .featured-item {
+    width: 90%;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .delivery-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    width: 90%;
+    max-width: 400px;
+  }
+  .fees {
+    width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .delivery-section h2 {
+    font-size: 22px;
+  }
+  .card h3 {
+    font-size: 18px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .menu-item {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .cart, .checkout-form {
+    width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-item h3 {
+    font-size: 18px;
+  }
+  .menu-item .price {
+    font-size: 14px;
+  }
+  .order-card {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .contact-form {
+    width: 95%;
+  }
+  .quick-links {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section h2 {
+    font-size: 22px;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 14px;
+  }
+  .whatsapp-btn {
+    padding: 10px 18px;
+    font-size: 0.9em;
+  }
+}
