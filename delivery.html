@@ -21,28 +21,44 @@
 
   <!-- Delivery Section -->
   <section class="delivery-section">
-    <h2>Delivery Options</h2>
-    <button class="toggle-btn" onclick="toggleDelivery()">Show Delivery Options</button>
-    
-    <div id="deliveryOptions" style="display:none;" class="delivery-box">
-      <h3>Priority Delivery 🏍️</h3>
-      <p>Delivered within 30–45 minutes</p>
-      
-      <h3>Standard Delivery 🚚</h3>
-      <p>Delivered within 1–2 hours</p>
-      
-      <h3>Order & Collect 🍔</h3>
-      <p>Place your order and collect at no extra cost</p>
+    <h2>Our Delivery Options</h2>
+    <div class="delivery-cards">
+      <div class="card">
+        <h3>🏍️ Priority Delivery</h3>
+        <p>Delivered within 30–45 minutes</p>
+      </div>
+      <div class="card">
+        <h3>🚚 Standard Delivery</h3>
+        <p>Delivered within 1–2 hours</p>
+      </div>
+      <div class="card">
+        <h3>🍔 Order & Collect</h3>
+        <p>Pick up your meal at no extra cost</p>
+      </div>
     </div>
 
-    <a href="orders.html" class="order-btn">📦 View Order Queue</a>
+    <!-- Delivery Fees -->
+    <h2>Delivery Fees</h2>
+    <div class="fees">
+      <p>✅ Free delivery for orders over R100</p>
+      <p>💰 R15 flat fee for orders under R100</p>
+      <p>📍 Extra R10 for areas outside Nelspruit</p>
+    </div>
+
+    <!-- Operating Hours -->
+    <h2>Operating Hours</h2>
+    <div class="hours">
+      <p>🕒 Monday – Friday: 10 AM – 9 PM</p>
+      <p>🕒 Saturday – Sunday: 11 AM – 10 PM</p>
+    </div>
+
+    <!-- Call to Action -->
+    <a href="orders.html" class="cta-btn">Place Your Order Now</a>
   </section>
 
   <!-- Footer -->
   <footer>
     <p>&copy; 2026 Vetkoek Delivery | Front of 46 Anderson Street, Nelspruit</p>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
